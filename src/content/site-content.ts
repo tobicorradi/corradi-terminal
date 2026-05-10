@@ -1,6 +1,6 @@
 export const siteContent = {
-  name: 'Tobias Corradi',
-  availability: 'Open to meaningful challenges',
+  name: 'Tobías Corradi',
+  availability: 'Open to meaningful challenges.',
   location: 'Buenos Aires, Argentina',
   navigation: [
     { id: 'about', index: '_01.', label: 'About' },
@@ -8,91 +8,104 @@ export const siteContent = {
     { id: 'stack', index: '_03.', label: 'Stack' },
     { id: 'contact', index: '_04.', label: 'Contact' },
   ],
+  socialLinks: {
+    github: {
+      href: 'https://github.com/tobicorradi',
+      label: 'Open GitHub profile',
+    },
+  },
   heading: {
-    kicker: '// Software Engineer',
-    title: 'Tobias Corradi',
-    technologies: ['React', 'TypeScript', 'Creative Frontends', 'Design Systems'],
+    kicker: "// Engineering Lead @ The Farmer's Dog",
+    title: 'Tobías Corradi',
+    technologies: ['React', 'TypeScript', 'Next.js', 'Redux'],
     summary:
-      'I build product surfaces with a terminal-era attitude: deliberate structure, strong typography, and motion that gives the interface a pulse.',
+      'Engineering Lead building clean and scalable frontend systems using React, TypeScript and Next.js.',
   },
   cards: [
     {
       title: 'Role',
       icon: '[@]',
-      description: 'Current focus',
-      lines: ['Frontend architecture', 'Creative product experiences'],
+      description: 'Current position',
+      lines: ['Engineering Lead', "The Farmer's Dog"],
     },
     {
       title: 'Experience',
       icon: '(O)',
-      description: 'Years in motion',
-      lines: ['6+ years building on the web', 'React / TypeScript / Product delivery'],
+      description: 'Years in practice',
+      lines: ['6+ years building on the web', 'Mentoring developers and leading frontend initiatives'],
     },
     {
       title: 'Stack',
       icon: '</>',
-      description: 'Primary toolkit',
-      lines: ['React, TypeScript, Vite', 'CSS Modules, motion, design systems'],
+      description: 'Core frontend toolkit',
+      lines: ['React, TypeScript, Next.js, Redux', 'JavaScript and CSS Modules'],
     },
     {
       title: 'Focus',
       icon: '[*]',
-      description: 'How I work',
-      lines: ['Clear interfaces and scalable systems', 'Fast collaboration, careful execution'],
+      description: 'What I optimize',
+      lines: ['Frontend architecture and clean UI', 'Developer experience and product thinking'],
     },
   ],
   about: [
-    'I enjoy shaping the layer where product thinking, design taste, and engineering discipline meet. The result should look distinctive, but also be easy for a team to extend.',
-    'That usually means component systems with a point of view, interaction details that feel intentional, and enough structure under the hood to keep momentum high as the project grows.',
+    'Frontend-focused Software Engineer and Engineering Lead with experience building scalable web applications, frontend systems and product-focused experiences. Specialized in React, TypeScript and Next.js, with strong interest in clean UI, frontend architecture, developer experience and product thinking.',
+    "I build clean, scalable and product-focused web experiences. Currently working as Engineering Lead at The Farmer's Dog, focused on frontend systems, developer experience and mentoring.",
+    'I studied at Escuela Da Vinci and stay active in the frontend community through React Learning Camp promotion, React community participation and tech-focused LinkedIn networking.',
   ],
+  aboutNote:
+    'Current interests: frontend systems, product-focused development, developer experience, AI, scalable web applications, clean UI and minimalist interfaces.',
   workTimeline: [
     {
-      period: '2024 -> now',
+      period: 'Current',
       category: 'Lead',
-      title: 'Interface Systems',
-      company: 'Design-minded product teams',
+      title: 'Engineering Lead / Software Engineer',
+      company: "The Farmer's Dog",
       description:
-        'Leading frontend efforts that connect brand expression with robust reusable patterns, from hero sections to shared product primitives.',
+        'Building scalable web applications, frontend systems and product-focused experiences with React, TypeScript, Next.js, Redux and JavaScript.',
     },
     {
-      period: '2022 -> 2024',
-      category: 'Build',
-      title: 'Developer Experience',
-      company: 'Internal tooling and workflows',
+      period: '6+ years',
+      category: 'Frontend',
+      title: 'Scalable Web Applications',
+      company: 'React / TypeScript / Next.js / Redux',
       description:
-        'Improved handoff quality, tightened feedback loops, and reduced friction between design and implementation through better systems and documentation.',
+        'Focused on clean UI, reusable frontend architecture and product development that balances speed, clarity and maintainability.',
     },
     {
-      period: '2019 -> 2022',
-      category: 'Ship',
-      title: 'Product Surfaces',
-      company: 'Web apps and launches',
+      period: 'Ongoing',
+      category: 'Mentor',
+      title: 'Developer Experience and Leadership',
+      company: 'Product-focused engineering teams',
       description:
-        'Built frontend experiences across marketing and product, balancing speed, accessibility, and a strong visual identity.',
+        'Mentoring developers, leading frontend initiatives and improving developer experience through better systems, collaboration and technical direction.',
     },
   ],
   stackGroups: [
     {
-      label: '// UI',
-      title: 'Frontend',
-      items: ['React', 'TypeScript', 'Vite', 'Next.js', 'CSS Modules', 'Responsive UI'],
+      label: '// STACK',
+      title: 'Frontend Stack',
+      items: ['React', 'TypeScript', 'Next.js', 'Redux', 'JavaScript', 'CSS Modules'],
     },
     {
       label: '// SYSTEM',
-      title: 'Architecture',
-      items: ['Design Systems', 'Component APIs', 'State Modeling', 'Accessibility', 'Testing'],
+      title: 'Engineering Skills',
+      items: ['Frontend Architecture', 'UI Development', 'Developer Experience', 'Product Development'],
     },
     {
-      label: '// MOTION',
-      title: 'Interaction',
-      items: ['Micro-animations', 'Scroll reveals', 'ASCII experiments', 'Visual polish'],
+      label: '// INTERESTS',
+      title: 'Current Interests',
+      items: ['Frontend systems', 'Product-focused development', 'AI', 'Scalable web applications', 'Clean UI', 'Minimalist interfaces'],
     },
   ],
   contact: {
     message:
-      'If you are building something thoughtful on the web, I am especially interested in projects where strong product sense and frontend craft both matter.',
+      'If you are building something product-focused on the web, I am especially interested in frontend systems, developer experience, AI-adjacent work and clean UI challenges.',
     secondaryMessage:
-      'This starter keeps all the copy in one place so you can quickly plug in your real links, projects, and contact details next.',
-    topics: ['Product UI', 'Design Systems', 'Motion Direction', 'Frontend Leadership'],
+      'The best fit is work that values scalable web applications, clear product thinking and strong collaboration across engineering and design.',
+    topics: ['React', 'TypeScript', 'Next.js', 'Redux', 'Frontend Architecture', 'AI'],
+    link: {
+      label: 'Open LinkedIn',
+      href: 'https://www.linkedin.com/in/corraditobias',
+    },
   },
 };

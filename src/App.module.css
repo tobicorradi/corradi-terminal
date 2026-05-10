@@ -13,14 +13,15 @@
   position: absolute;
   inset: 0;
   background:
+    radial-gradient(circle, var(--color-dot-soft) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px,
     repeating-linear-gradient(
       180deg,
-      rgba(var(--color-foreground-rgb), 0.03) 0,
-      rgba(var(--color-foreground-rgb), 0.03) 1px,
+      var(--color-scanline) 0,
+      var(--color-scanline) 1px,
       transparent 1px,
       transparent 5px
     );
-  opacity: 0.22;
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -48,10 +49,11 @@
   content: '';
   position: absolute;
   border-radius: 999px;
-  filter: blur(64px);
+  filter: blur(52px);
   pointer-events: none;
   z-index: 0;
   animation: bloom-breathe 10s ease-in-out infinite;
+  opacity: 0.6;
 }
 
 .frame::before {
@@ -79,22 +81,37 @@
 
 .main {
   display: grid;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.88fr);
   gap: clamp(2rem, 4vw, 5rem);
-  padding: clamp(2.5rem, 7vw, 5rem) 0 1.5rem;
-  border-bottom: 1px solid var(--color-border);
+  padding: clamp(2.5rem, 7vw, 5rem) 0 2.75rem;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background:
+    radial-gradient(circle, rgba(var(--color-foreground-rgb), 0.72) 0 0.7px, transparent 0.95px)
+    0 0 / 6px 2px repeat-x;
+  opacity: 0.48;
 }
 
 .heroCopy {
   display: grid;
   gap: 1.2rem;
   align-content: start;
-  animation: rise-in 720ms ease-out both;
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: terminal-enter 720ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
 }
 
 .kickerRow {
@@ -129,20 +146,70 @@
 
 .title {
   margin: 0;
+  display: inline-flex;
+  align-items: baseline;
   font-family: var(--font-display);
-  font-size: clamp(4.8rem, 11vw, 8.8rem);
+  font-size: 114px;
   line-height: 0.88;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(var(--color-foreground-rgb), 0.86);
-  text-shadow:
-    0 0 10px rgba(var(--color-foreground-rgb), 0.07),
-    0 0 22px rgba(var(--color-foreground-rgb), 0.08);
+  color: rgba(var(--color-foreground-rgb), 0.9);
+  text-shadow: 0 0 8px rgba(var(--color-foreground-rgb), 0.08);
+}
+
+.titleText {
+  display: inline-block;
 }
 
 .cursor {
   display: inline-block;
-  animation: cursor-blink 1s steps(2, end) infinite;
+  margin-left: 0.06em;
+  color: rgba(var(--color-foreground-rgb), 0.9);
+  text-shadow: 0 0 8px rgba(var(--color-foreground-rgb), 0.08);
+  line-height: 1;
+  animation: terminal-caret-blink 1s steps(1, end) infinite;
+}
+
+@keyframes terminal-caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes terminal-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .titleText {
+    background-image: radial-gradient(
+      circle,
+      rgba(var(--color-foreground-rgb), 0.96) 0 1.35px,
+      transparent 1.55px
+    );
+    background-position: 0 50%;
+    background-size: 5px 5px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 }
 
 .techLine {
@@ -150,11 +217,10 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-copy-strong);
-  text-shadow: 0 0 14px rgba(var(--color-foreground-rgb), 0.08);
+  text-shadow: 0 0 6px rgba(var(--color-foreground-rgb), 0.06);
 }
 
 .summary,
-.supporting,
 .bodyCopy,
 .noteCopy,
 .contactStatus,
@@ -169,11 +235,6 @@
   max-width: 34rem;
 }
 
-.supporting {
-  max-width: 36rem;
-  color: var(--color-copy-soft);
-}
-
 .ctaRow {
   display: flex;
   gap: 1rem;
@@ -183,24 +244,40 @@
 
 .terminalButton,
 .contactAction {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 3.25rem;
   padding: 0.75rem 1.25rem;
   border: 1px solid var(--color-border-strong);
+  background:
+    linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.03), rgba(var(--color-foreground-rgb), 0.012)),
+    radial-gradient(circle, var(--color-dot-soft) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px;
   color: var(--color-foreground);
   text-decoration: none;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  box-shadow:
-    inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.04),
-    0 0 22px rgba(var(--color-foreground-rgb), 0.03);
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.03);
   transition:
     transform 180ms ease,
     border-color 180ms ease,
     background-color 180ms ease,
     box-shadow 180ms ease;
+}
+
+.terminalButton::after,
+.contactAction::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  bottom: 0.6rem;
+  left: 1rem;
+  height: 2px;
+  background:
+    radial-gradient(circle, rgba(var(--color-foreground-rgb), 0.7) 0 0.7px, transparent 0.95px)
+    0 0 / 6px 2px repeat-x;
+  opacity: 0.45;
 }
 
 .terminalButton:hover,
@@ -209,10 +286,10 @@
 .contactAction:focus-visible {
   transform: translateY(-2px);
   border-color: var(--color-foreground);
-  background: rgba(var(--color-foreground-rgb), 0.04);
-  box-shadow:
-    inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.06),
-    0 0 26px rgba(var(--color-foreground-rgb), 0.08);
+  background:
+    linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.045), rgba(var(--color-foreground-rgb), 0.018)),
+    radial-gradient(circle, var(--color-dot) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.05);
 }
 
 .terminalButton:focus-visible,
@@ -226,41 +303,53 @@
   grid-template-columns: 1px minmax(240px, 1fr);
   gap: clamp(1rem, 3vw, 2.5rem);
   align-items: center;
-  animation: rise-in 820ms ease-out 120ms both;
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: terminal-enter 820ms cubic-bezier(0.16, 1, 0.3, 1) 220ms both;
 }
 
 .verticalRule {
   min-height: 100%;
+  width: 2px;
   background:
-    linear-gradient(
-      180deg,
-      transparent 0,
-      rgba(var(--color-foreground-rgb), 0.68) 10%,
-      rgba(var(--color-foreground-rgb), 0.68) 90%,
-      transparent 100%
-    );
-  box-shadow: 0 0 16px rgba(var(--color-foreground-rgb), 0.14);
+    radial-gradient(circle, rgba(var(--color-foreground-rgb), 0.72) 0 0.7px, transparent 0.95px)
+    0 0 / 2px 6px repeat-y;
+  opacity: 0.65;
 }
 
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .sectionPanel {
-  padding: 1.6rem;
+  position: relative;
+  padding: 1.9rem;
   border: 1px solid var(--color-border);
-  background: linear-gradient(
-    180deg,
-    rgba(var(--color-foreground-rgb), 0.02),
-    rgba(var(--color-foreground-rgb), 0.01)
-  );
-  backdrop-filter: blur(2px);
-  box-shadow:
-    inset 0 0 32px rgba(var(--color-foreground-rgb), 0.012),
-    0 0 36px rgba(var(--color-foreground-rgb), 0.035);
-  animation: rise-in 800ms ease-out both;
+  background:
+    linear-gradient(180deg, var(--color-surface-strong), var(--color-surface)),
+    radial-gradient(circle, var(--color-dot-soft) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.03);
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: terminal-enter 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.main > section:nth-of-type(3) {
+  animation-delay: 420ms;
+}
+
+.main > section:nth-of-type(4) {
+  animation-delay: 520ms;
+}
+
+.main > section:nth-of-type(5) {
+  animation-delay: 620ms;
+}
+
+.main > section:nth-of-type(6) {
+  animation-delay: 720ms;
 }
 
 .sectionHeader {
@@ -268,7 +357,7 @@
   grid-template-columns: auto auto 1fr;
   gap: 0.9rem;
   align-items: center;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.75rem;
 }
 
 .sectionIndex,
@@ -299,8 +388,11 @@
 }
 
 .sectionRule {
-  height: 1px;
-  background: linear-gradient(90deg, rgba(var(--color-foreground-rgb), 0.28), transparent);
+  height: 2px;
+  background:
+    radial-gradient(circle, rgba(var(--color-foreground-rgb), 0.6) 0 0.7px, transparent 0.95px)
+    0 0 / 6px 2px repeat-x;
+  opacity: 0.52;
 }
 
 .aboutGrid,
@@ -312,7 +404,7 @@
 
 .copyStack {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .terminalNote,
@@ -321,28 +413,96 @@
   gap: 0.9rem;
   align-content: start;
   padding: 1.25rem;
-  border: 1px solid rgba(var(--color-foreground-rgb), 0.18);
-  background: rgba(var(--color-foreground-rgb), 0.02);
-  box-shadow:
-    inset 0 0 28px rgba(var(--color-foreground-rgb), 0.012),
-    0 0 22px rgba(var(--color-foreground-rgb), 0.03);
+  border: 1px solid rgba(var(--color-foreground-rgb), 0.22);
+  background:
+    linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.03), rgba(var(--color-foreground-rgb), 0.015)),
+    radial-gradient(circle, var(--color-dot-soft) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.03);
 }
 
 .timelineGrid,
 .stackGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
+}
+
+.cardGrid > *,
+.aboutGrid > *,
+.contactGrid > *,
+.timelineGrid > *,
+.stackGrid > * {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: terminal-enter 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cardGrid > :nth-child(1) {
+  animation-delay: 280ms;
+}
+
+.cardGrid > :nth-child(2) {
+  animation-delay: 360ms;
+}
+
+.cardGrid > :nth-child(3) {
+  animation-delay: 440ms;
+}
+
+.cardGrid > :nth-child(4) {
+  animation-delay: 520ms;
+}
+
+.aboutGrid > :nth-child(1) {
+  animation-delay: 540ms;
+}
+
+.aboutGrid > :nth-child(2) {
+  animation-delay: 620ms;
+}
+
+.timelineGrid > :nth-child(1) {
+  animation-delay: 640ms;
+}
+
+.timelineGrid > :nth-child(2) {
+  animation-delay: 720ms;
+}
+
+.timelineGrid > :nth-child(3) {
+  animation-delay: 800ms;
+}
+
+.stackGrid > :nth-child(1) {
+  animation-delay: 760ms;
+}
+
+.stackGrid > :nth-child(2) {
+  animation-delay: 840ms;
+}
+
+.stackGrid > :nth-child(3) {
+  animation-delay: 920ms;
+}
+
+.contactGrid > :nth-child(1) {
+  animation-delay: 880ms;
+}
+
+.contactGrid > :nth-child(2) {
+  animation-delay: 960ms;
 }
 
 .timelineCard,
 .stackCard {
   display: grid;
   gap: 0.85rem;
-  padding: 1.25rem;
-  border: 1px solid rgba(var(--color-foreground-rgb), 0.14);
-  background: rgba(var(--color-foreground-rgb), 0.015);
-  box-shadow: 0 0 20px rgba(var(--color-foreground-rgb), 0.024);
+  padding: 1.45rem;
+  border: 1px solid rgba(var(--color-foreground-rgb), 0.2);
+  background:
+    linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.02), rgba(var(--color-foreground-rgb), 0.012)),
+    radial-gradient(circle, var(--color-dot-soft) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.025);
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -353,7 +513,7 @@
 .stackCard:hover {
   transform: translateY(-3px);
   border-color: rgba(var(--color-foreground-rgb), 0.34);
-  box-shadow: 0 0 26px rgba(var(--color-foreground-rgb), 0.06);
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.05);
 }
 
 .timelineMeta {
@@ -388,7 +548,9 @@
   min-height: 2.5rem;
   padding: 0.45rem 0.85rem;
   border: 1px solid rgba(var(--color-foreground-rgb), 0.18);
-  background: rgba(var(--color-foreground-rgb), 0.02);
+  background:
+    linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.026), rgba(var(--color-foreground-rgb), 0.014)),
+    radial-gradient(circle, var(--color-dot-soft) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px;
   color: var(--color-copy-strong);
 }
 
@@ -401,6 +563,7 @@
 }
 
 .footer {
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -408,8 +571,23 @@
   padding: 1.5rem 0 0.25rem;
   color: var(--color-copy-soft);
   font-size: 0.95rem;
-  border-top: 1px solid var(--color-border);
   margin-top: 2rem;
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: terminal-enter 760ms cubic-bezier(0.16, 1, 0.3, 1) 1040ms both;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background:
+    radial-gradient(circle, rgba(var(--color-foreground-rgb), 0.65) 0 0.7px, transparent 0.95px)
+    0 0 / 6px 2px repeat-x;
+  opacity: 0.5;
 }
 
 .footerStatus,
@@ -460,6 +638,10 @@
 }
 
 @media (max-width: 720px) {
+  .main {
+    gap: 2.25rem;
+  }
+
   .frame {
     padding-inline: 1rem;
   }
@@ -486,7 +668,7 @@
 
 @media (max-width: 560px) {
   .title {
-    font-size: clamp(3.6rem, 22vw, 5rem);
+    font-size: 80px;
   }
 
   .ctaRow,
@@ -508,10 +690,18 @@
   .heroCopy,
   .orbRail,
   .sectionPanel,
+  .cardGrid > *,
+  .aboutGrid > *,
+  .contactGrid > *,
+  .timelineGrid > *,
+  .stackGrid > *,
+  .footer,
   .dataStrip,
-  .statusDot,
-  .cursor {
+  .statusDot {
     animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
 
   .terminalButton,

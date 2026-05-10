@@ -1,13 +1,14 @@
 .card {
+  position: relative;
   display: grid;
   gap: 1rem;
   padding: 1.35rem;
   min-height: 100%;
-  border: 1px solid var(--color-border);
-  background: rgba(var(--color-foreground-rgb), 0.015);
-  box-shadow:
-    inset 0 0 24px rgba(var(--color-foreground-rgb), 0.012),
-    0 0 18px rgba(var(--color-foreground-rgb), 0.026);
+  border: 1px solid rgba(var(--color-foreground-rgb), 0.2);
+  background:
+    linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.02), rgba(var(--color-foreground-rgb), 0.012)),
+    radial-gradient(circle, var(--color-dot-soft) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.03);
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -18,10 +19,10 @@
 .card:hover {
   transform: translateY(-4px);
   border-color: rgba(var(--color-foreground-rgb), 0.32);
-  background: rgba(var(--color-foreground-rgb), 0.025);
-  box-shadow:
-    inset 0 0 28px rgba(var(--color-foreground-rgb), 0.016),
-    0 0 24px rgba(var(--color-foreground-rgb), 0.05);
+  background:
+    linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.032), rgba(var(--color-foreground-rgb), 0.016)),
+    radial-gradient(circle, var(--color-dot) 0 0.75px, transparent 0.95px) 0 0 / 6px 6px;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.045);
 }
 
 .header {
@@ -34,6 +35,7 @@
   font-family: var(--font-display);
   font-size: 2.1rem;
   color: var(--color-foreground);
+  text-shadow: 0 0 8px rgba(var(--color-foreground-rgb), 0.08);
 }
 
 .titleGroup {
@@ -52,8 +54,11 @@
 
 .rule {
   width: 3rem;
-  height: 1px;
-  background: rgba(var(--color-foreground-rgb), 0.34);
+  height: 2px;
+  background:
+    radial-gradient(circle, rgba(var(--color-foreground-rgb), 0.7) 0 0.7px, transparent 0.95px)
+    0 0 / 6px 2px repeat-x;
+  opacity: 0.5;
 }
 
 .description,

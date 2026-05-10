@@ -19,6 +19,11 @@
   --color-border-strong: rgba(var(--color-foreground-rgb), 0.28);
   --color-bloom: rgba(var(--color-foreground-rgb), 0.12);
   --color-bloom-strong: rgba(var(--color-foreground-rgb), 0.22);
+  --color-surface: rgba(var(--color-foreground-rgb), 0.012);
+  --color-surface-strong: rgba(var(--color-foreground-rgb), 0.024);
+  --color-dot: rgba(var(--color-foreground-rgb), 0.1);
+  --color-dot-soft: rgba(var(--color-foreground-rgb), 0.05);
+  --color-scanline: rgba(var(--color-foreground-rgb), 0.028);
 }
 
 * {

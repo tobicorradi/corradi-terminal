@@ -1,29 +1,37 @@
+import { useRef } from 'react';
 import { AsciiOrb, InfoCard, NavBar } from './components';
 import { siteContent } from './content/site-content';
+import { usePinnedNav } from './hooks';
 import styles from './App.module.css';
 
 export const App = () => {
   const {
     availability,
+    aboutNote,
     cards,
     contact,
     heading,
     location,
     name,
     navigation,
+    socialLinks,
     stackGroups,
     workTimeline,
   } = siteContent;
-  const supportingCopy =
-    'supporting' in heading && typeof heading.supporting === 'string' ? heading.supporting : undefined;
+  const heroRef = useRef<HTMLElement>(null);
+  const isPinnedNav = usePinnedNav(heroRef, 104);
+  const isExternalContactLink = /^https?:\/\//.test(contact.link.href);
 
   return (
     <div className={styles.shell} id="top">
       <div className={styles.frame}>
-        <NavBar items={navigation} name={name} />
+        <NavBar githubLink={socialLinks.github} isPinned={false} items={navigation} name={name} />
+        {isPinnedNav ? (
+          <NavBar githubLink={socialLinks.github} isPinned items={navigation} name={name} />
+        ) : null}
 
         <main className={styles.main}>
-          <section className={styles.hero} aria-labelledby="hero-title">
+          <section className={styles.hero} aria-labelledby="hero-title" ref={heroRef}>
             <div className={styles.heroCopy}>
               <div className={styles.kickerRow}>
                 <p className={styles.kicker}>{heading.kicker}</p>
@@ -31,15 +39,14 @@ export const App = () => {
               </div>
 
               <h1 className={styles.title} id="hero-title">
-                {heading.title}
+                <span className={styles.titleText}>{heading.title}</span>
                 <span className={styles.cursor} aria-hidden="true">
-                  _
+                  |
                 </span>
               </h1>
 
               <p className={styles.techLine}>{heading.technologies.join(' • ')}</p>
               <p className={styles.summary}>{heading.summary}</p>
-              {supportingCopy ? <p className={styles.supporting}>{supportingCopy}</p> : null}
 
               <div className={styles.ctaRow}>
                 <a className={styles.terminalButton} href="#about">
@@ -50,6 +57,14 @@ export const App = () => {
                 </a>
                 <a className={styles.terminalButton} href="#contact">
                   [ CONTACT ]
+                </a>
+                <a
+                  className={styles.terminalButton}
+                  href={socialLinks.github.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  [ GITHUB ]
                 </a>
               </div>
             </div>
@@ -92,10 +107,7 @@ export const App = () => {
 
               <aside className={styles.terminalNote}>
                 <p className={styles.noteLabel}>// SIGNAL</p>
-                <p className={styles.noteCopy}>
-                  Building precise interfaces, expressive motion systems, and frontend foundations that
-                  make teams faster.
-                </p>
+                <p className={styles.noteCopy}>{aboutNote}</p>
               </aside>
             </div>
           </section>
@@ -177,8 +189,13 @@ export const App = () => {
                 <p className={styles.noteLabel}>// STATUS</p>
                 <p className={styles.contactStatus}>{availability}</p>
                 <p className={styles.contactLocation}>{location}</p>
-                <a className={styles.contactAction} href="#top">
-                  Return to top
+                <a
+                  className={styles.contactAction}
+                  href={contact.link.href}
+                  rel={isExternalContactLink ? 'noreferrer' : undefined}
+                  target={isExternalContactLink ? '_blank' : undefined}
+                >
+                  {contact.link.label}
                 </a>
               </aside>
             </div>
