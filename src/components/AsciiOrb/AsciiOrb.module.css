@@ -1,0 +1,44 @@
+.shell {
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+  contain: layout paint;
+  isolation: isolate;
+  will-change: transform;
+  animation: orb-drift 8s ease-in-out infinite;
+}
+
+.orb {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.55vw, 1.45rem);
+  line-height: 0.8;
+  letter-spacing: 0.05em;
+  color: var(--color-foreground);
+  text-shadow:
+    0 0 10px rgba(var(--color-foreground-rgb), 0.18),
+    0 0 20px rgba(var(--color-foreground-rgb), 0.06);
+}
+
+@keyframes orb-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 560px) {
+  .orb {
+    font-size: 0.94rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell {
+    animation: none;
+  }
+}

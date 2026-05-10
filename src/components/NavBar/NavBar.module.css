@@ -1,0 +1,162 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-foreground);
+  text-decoration: none;
+}
+
+.mark {
+  width: 4.2rem;
+  height: 2rem;
+  border: 1px solid rgba(var(--color-foreground-rgb), 0.22);
+  background:
+    repeating-linear-gradient(
+      120deg,
+      rgba(var(--color-foreground-rgb), 0.88) 0,
+      rgba(var(--color-foreground-rgb), 0.88) 0.28rem,
+      transparent 0.28rem,
+      transparent 0.54rem
+    );
+}
+
+.name,
+.navLink {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.name {
+  white-space: nowrap;
+}
+
+.cursor {
+  display: inline-block;
+  animation: cursor-blink 1s steps(2, end) infinite;
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLink {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--color-copy);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: var(--color-foreground);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid rgba(var(--color-foreground-rgb), 0.35);
+  outline-offset: 4px;
+}
+
+.index {
+  color: var(--color-copy-soft);
+}
+
+.signal {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.18rem;
+  min-width: 2rem;
+  height: 2rem;
+}
+
+.signal span {
+  width: 0.18rem;
+  background: var(--color-foreground);
+  animation: signal-wave 900ms ease-in-out infinite;
+}
+
+.signal span:nth-child(1) {
+  height: 0.7rem;
+  animation-delay: 0ms;
+}
+
+.signal span:nth-child(2) {
+  height: 1.2rem;
+  animation-delay: 120ms;
+}
+
+.signal span:nth-child(3) {
+  height: 1.6rem;
+  animation-delay: 240ms;
+}
+
+.signal span:nth-child(4) {
+  height: 0.9rem;
+  animation-delay: 360ms;
+}
+
+.signal span:nth-child(5) {
+  height: 1.45rem;
+  animation-delay: 480ms;
+}
+
+@keyframes signal-wave {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scaleY(0.72);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@media (max-width: 960px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .signal {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .brand {
+    width: 100%;
+  }
+
+  .navList {
+    justify-content: flex-start;
+    gap: 0.6rem 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .signal span {
+    animation: none;
+  }
+
+  .navLink {
+    transition: none;
+  }
+}
