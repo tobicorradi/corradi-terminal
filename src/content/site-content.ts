@@ -15,7 +15,7 @@ export const siteContent = {
     },
   },
   heading: {
-    kicker: "// Engineering Lead @ The Farmer's Dog",
+    kicker: '// Engineering Lead @ Rootstrap',
     title: 'Tobías Corradi',
     technologies: ['React', 'TypeScript', 'Next.js', 'Redux'],
     summary:
@@ -26,7 +26,7 @@ export const siteContent = {
       title: 'Role',
       icon: '[@]',
       description: 'Current position',
-      lines: ['Engineering Lead', "The Farmer's Dog"],
+      lines: ['Engineering Lead', 'Rootstrap'],
     },
     {
       title: 'Experience',
@@ -49,7 +49,7 @@ export const siteContent = {
   ],
   about: [
     'Frontend-focused Software Engineer and Engineering Lead with experience building scalable web applications, frontend systems and product-focused experiences. Specialized in React, TypeScript and Next.js, with strong interest in clean UI, frontend architecture, developer experience and product thinking.',
-    "I build clean, scalable and product-focused web experiences. Currently working as Engineering Lead at The Farmer's Dog, focused on frontend systems, developer experience and mentoring.",
+    "I build clean, scalable and product-focused web experiences. Currently working as Engineering Lead at Rootstrap, partnering with The Farmer's Dog on frontend systems, developer experience and mentoring.",
     'I studied at Escuela Da Vinci and stay active in the frontend community through React Learning Camp promotion, React community participation and tech-focused LinkedIn networking.',
   ],
   aboutNote:
@@ -59,9 +59,9 @@ export const siteContent = {
       period: 'Current',
       category: 'Lead',
       title: 'Engineering Lead / Software Engineer',
-      company: "The Farmer's Dog",
+      company: 'Rootstrap',
       description:
-        'Building scalable web applications, frontend systems and product-focused experiences with React, TypeScript, Next.js, Redux and JavaScript.',
+        "Leading frontend work through Rootstrap while partnering with The Farmer's Dog to build scalable web applications, frontend systems and product-focused experiences with React, TypeScript, Next.js, Redux and JavaScript.",
     },
     {
       period: '6+ years',

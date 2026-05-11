@@ -146,8 +146,7 @@
 
 .title {
   margin: 0;
-  display: inline-flex;
-  align-items: baseline;
+  display: inline-block;
   font-family: var(--font-display);
   font-size: 114px;
   line-height: 0.88;
@@ -158,15 +157,26 @@
 }
 
 .titleText {
-  display: inline-block;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.18em;
 }
 
-.cursor {
+.titleWord {
+  display: inline;
+}
+
+.titleWordTrailing::after {
+  content: '';
   display: inline-block;
-  margin-left: 0.06em;
-  color: rgba(var(--color-foreground-rgb), 0.9);
-  text-shadow: 0 0 8px rgba(var(--color-foreground-rgb), 0.08);
-  line-height: 1;
+  width: 0.045em;
+  height: 0.78em;
+  margin-left: 0.12em;
+  border-radius: 1px;
+  background-color: rgba(var(--color-foreground-rgb), 0.96);
+  box-shadow: 0 0 8px rgba(var(--color-foreground-rgb), 0.08);
+  vertical-align: -0.04em;
   animation: terminal-caret-blink 1s steps(1, end) infinite;
 }
 
@@ -197,7 +207,7 @@
 }
 
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .titleText {
+  .titleWord {
     background-image: radial-gradient(
       circle,
       rgba(var(--color-foreground-rgb), 0.96) 0 1.35px,

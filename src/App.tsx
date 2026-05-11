@@ -21,6 +21,9 @@ export const App = () => {
   const heroRef = useRef<HTMLElement>(null);
   const isPinnedNav = usePinnedNav(heroRef, 104);
   const isExternalContactLink = /^https?:\/\//.test(contact.link.href);
+  const titleParts = heading.title.trim().split(/\s+/);
+  const trailingTitlePart = titleParts.at(-1) ?? heading.title;
+  const leadingTitleParts = titleParts.slice(0, -1);
 
   return (
     <div className={styles.shell} id="top">
@@ -38,10 +41,16 @@ export const App = () => {
                 <span className={styles.dataStrip} aria-hidden="true" />
               </div>
 
-              <h1 className={styles.title} id="hero-title">
-                <span className={styles.titleText}>{heading.title}</span>
-                <span className={styles.cursor} aria-hidden="true">
-                  |
+              <h1 aria-label={heading.title} className={styles.title} id="hero-title">
+                <span className={styles.titleText}>
+                  {leadingTitleParts.map((part) => (
+                    <span className={styles.titleWord} key={part}>
+                      {part}
+                    </span>
+                  ))}
+                  <span className={`${styles.titleWord} ${styles.titleWordTrailing}`.trim()}>
+                    {trailingTitlePart}
+                  </span>
                 </span>
               </h1>
 
