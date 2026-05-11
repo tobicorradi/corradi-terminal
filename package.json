@@ -4,8 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite -- --port 3423",
-    "build": "tsc -b && vite build",
+    "dev": "vite --port 3423",
+    "build:client": "vite build",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir .ssr",
+    "prerender": "node scripts/prerender.mjs",
+    "generate:seo": "node scripts/generate-seo-files.mjs",
+    "build": "tsc -b && npm run build:client && npm run build:server && npm run prerender && npm run generate:seo",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run"

@@ -1,0 +1,31 @@
+{
+  "siteUrl": "https://corraditobias.com",
+  "siteName": "Tobías Corradi",
+  "title": "Tobías Corradi | Engineering Lead | React, TypeScript, Next.js",
+  "description": "Engineering Lead and frontend-focused software engineer with 6+ years of experience building scalable web applications, frontend systems, and product-focused experiences with React, TypeScript, and Next.js.",
+  "locale": "en_US",
+  "themeColor": "#080706",
+  "keywords": [
+    "Tobías Corradi",
+    "Tobias Corradi",
+    "Engineering Lead",
+    "Software Engineer",
+    "Frontend Engineer",
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Redux",
+    "Frontend Architecture",
+    "Developer Experience",
+    "Buenos Aires"
+  ],
+  "ogImagePath": "/og-image.svg",
+  "ogImageAlt": "Terminal-style personal website card for Tobías Corradi.",
+  "iconPath": "/icon.svg",
+  "linkedinUrl": "https://www.linkedin.com/in/corraditobias",
+  "githubUrl": "https://github.com/tobicorradi",
+  "jobTitle": "Engineering Lead",
+  "company": "The Farmer's Dog",
+  "location": "Buenos Aires, Argentina",
+  "education": "Escuela Da Vinci"
+}

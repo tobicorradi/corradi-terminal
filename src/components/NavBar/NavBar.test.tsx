@@ -16,10 +16,15 @@ const githubLink = {
 describe('NavBar', () => {
   it('toggles the mobile menu from the hamburger button', async () => {
     const user = userEvent.setup();
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      value: 375,
+      writable: true,
+    });
 
     render(<NavBar githubLink={githubLink} isPinned={false} items={items} name="Tobías Corradi" />);
 
-    const toggleButton = screen.getByRole('button', { name: /open navigation menu/i });
+    const toggleButton = screen.getByLabelText(/open navigation menu/i);
     const navigation = screen.getByRole('navigation', { name: /primary/i });
 
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
@@ -32,7 +37,7 @@ describe('NavBar', () => {
 
     await user.click(screen.getByRole('link', { name: /work/i }));
 
-    expect(screen.getByRole('button', { name: /open navigation menu/i })).toHaveAttribute(
+    expect(screen.getByLabelText(/open navigation menu/i)).toHaveAttribute(
       'aria-expanded',
       'false',
     );

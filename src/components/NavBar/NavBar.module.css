@@ -86,6 +86,9 @@
   color: var(--color-foreground);
 }
 
+.headerMenuOpen {
+}
+
 .menuToggle {
   display: none;
 }

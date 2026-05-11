@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="og-title og-desc">
+  <title id="og-title">Tobías Corradi personal website preview</title>
+  <desc id="og-desc">A terminal-inspired social preview card for Tobías Corradi.</desc>
+  <defs>
+    <pattern id="dot-grid" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.1" fill="#c99361" fill-opacity="0.12" />
+    </pattern>
+    <linearGradient id="panel-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16110d" />
+      <stop offset="100%" stop-color="#080706" />
+    </linearGradient>
+    <radialGradient id="ambient-glow" cx="30%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#c99361" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#080706" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#080706" />
+  <rect width="1200" height="630" fill="url(#dot-grid)" />
+  <rect width="1200" height="630" fill="url(#ambient-glow)" />
+
+  <rect x="44" y="44" width="1112" height="542" fill="url(#panel-glow)" stroke="#c99361" stroke-opacity="0.18" />
+  <rect x="44" y="44" width="1112" height="542" fill="none" stroke="#c99361" stroke-opacity="0.08" stroke-dasharray="1 9" />
+
+  <g transform="translate(88 86)">
+    <rect width="96" height="48" fill="#c99361" fill-opacity="0.15" stroke="#c99361" stroke-opacity="0.42" />
+    <g fill="#c99361">
+      <polygon points="12,48 28,48 52,0 36,0" />
+      <polygon points="36,48 52,48 76,0 60,0" />
+      <polygon points="60,48 76,48 100,0 84,0" />
+    </g>
+    <text x="126" y="34" fill="#c99361" font-family="'IBM Plex Mono', monospace" font-size="28" letter-spacing="8">TOBÍAS CORRADI</text>
+  </g>
+
+  <text x="88" y="210" fill="#c99361" font-family="'IBM Plex Mono', monospace" font-size="30" letter-spacing="6">// ENGINEERING LEAD @ THE FARMER'S DOG</text>
+  <text x="88" y="318" fill="#f0bf8f" font-family="'IBM Plex Mono', monospace" font-size="110" font-weight="700" letter-spacing="6">TOBÍAS CORRADI|</text>
+  <text x="88" y="392" fill="#c99361" font-family="'IBM Plex Mono', monospace" font-size="28" letter-spacing="8">REACT • TYPESCRIPT • NEXT.JS • REDUX</text>
+
+  <text x="88" y="470" fill="#c99361" font-family="'IBM Plex Mono', monospace" font-size="30" letter-spacing="1.2">
+    <tspan x="88" dy="0">Engineering Lead building clean and scalable frontend</tspan>
+    <tspan x="88" dy="46">systems using React, TypeScript and Next.js.</tspan>
+  </text>
+
+  <g transform="translate(842 182)">
+    <circle cx="120" cy="120" r="112" fill="none" stroke="#f0bf8f" stroke-opacity="0.18" />
+    <circle cx="120" cy="120" r="112" fill="none" stroke="#f0bf8f" stroke-opacity="0.32" stroke-dasharray="2 8" />
+    <g fill="#f0bf8f" fill-opacity="0.92" font-family="'IBM Plex Mono', monospace" font-size="18">
+      <text x="26" y="58">::::::::::::::::</text>
+      <text x="44" y="84">::::::::::::::</text>
+      <text x="18" y="110">::::::::::</text>
+      <text x="54" y="136">::::::::::::</text>
+      <text x="34" y="162">:::::::::</text>
+      <text x="70" y="188">::::::::::</text>
+      <text x="30" y="214">::::::::::::</text>
+      <text x="62" y="240">:::::::::::</text>
+      <text x="42" y="266">::::::::</text>
+      <text x="82" y="292">::::::::</text>
+    </g>
+  </g>
+</svg>
