@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { AsciiOrb, InfoCard, NavBar } from './components';
 import { siteContent } from './content/site-content';
-import { usePinnedNav } from './hooks';
+import { usePinnedNav, useTheme } from './hooks';
 import styles from './App.module.css';
 
 export const App = () => {
@@ -20,6 +20,7 @@ export const App = () => {
   } = siteContent;
   const heroRef = useRef<HTMLElement>(null);
   const isPinnedNav = usePinnedNav(heroRef, 104);
+  const { theme, toggleTheme } = useTheme();
   const isExternalContactLink = /^https?:\/\//.test(contact.link.href);
   const titleParts = heading.title.trim().split(/\s+/);
   const trailingTitlePart = titleParts.at(-1) ?? heading.title;
@@ -28,9 +29,23 @@ export const App = () => {
   return (
     <div className={styles.shell} id="top">
       <div className={styles.frame}>
-        <NavBar githubLink={socialLinks.github} isPinned={false} items={navigation} name={name} />
+        <NavBar
+          githubLink={socialLinks.github}
+          isPinned={false}
+          items={navigation}
+          name={name}
+          onToggleTheme={toggleTheme}
+          theme={theme}
+        />
         {isPinnedNav ? (
-          <NavBar githubLink={socialLinks.github} isPinned items={navigation} name={name} />
+          <NavBar
+            githubLink={socialLinks.github}
+            isPinned
+            items={navigation}
+            name={name}
+            onToggleTheme={toggleTheme}
+            theme={theme}
+          />
         ) : null}
 
         <main className={styles.main}>

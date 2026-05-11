@@ -19,10 +19,10 @@
     linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.05), rgba(var(--color-foreground-rgb), 0.02)),
     radial-gradient(circle, rgba(var(--color-foreground-rgb), 0.08) 0 0.75px, transparent 0.95px) 0 0 / 6px
       6px,
-    rgba(6, 7, 9, 0.9);
+    var(--color-nav-surface);
   box-shadow:
     inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.03),
-    0 12px 40px rgba(0, 0, 0, 0.36);
+    0 12px 40px var(--color-shadow);
   backdrop-filter: blur(10px);
   transform: translateX(-50%);
   animation: navbar-dock-in 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -73,11 +73,14 @@
 .name,
 .navLink {
   letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
 .name {
   white-space: nowrap;
+}
+
+.navLink {
+  text-transform: uppercase;
 }
 
 .cursor {
@@ -95,6 +98,17 @@
 
 .nav {
   display: block;
+  flex: 1 1 auto;
+}
+
+.actions {
+  --theme-toggle-gap: 0.3rem;
+  --theme-toggle-inset: 0.22rem;
+  --theme-toggle-slot-size: 2.1rem;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .navList {
@@ -131,12 +145,11 @@
   color: var(--color-copy-soft);
 }
 
+.themeToggle,
 .githubLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.15rem;
-  height: 3.15rem;
   border: 1px solid rgba(var(--color-foreground-rgb), 0.22);
   background:
     linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.03), rgba(var(--color-foreground-rgb), 0.014)),
@@ -152,6 +165,102 @@
     background-color 180ms ease;
 }
 
+.themeToggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, var(--theme-toggle-slot-size));
+  gap: var(--theme-toggle-gap);
+  width: calc(
+    var(--theme-toggle-slot-size) * 2 + var(--theme-toggle-gap) + var(--theme-toggle-inset) * 2
+  );
+  min-height: calc(var(--theme-toggle-slot-size) + var(--theme-toggle-inset) * 2);
+  padding: var(--theme-toggle-inset);
+  color: var(--color-copy);
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.03);
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.themeToggleThumb {
+  position: absolute;
+  top: var(--theme-toggle-inset);
+  left: var(--theme-toggle-inset);
+  width: var(--theme-toggle-slot-size);
+  height: var(--theme-toggle-slot-size);
+  border: 1px solid rgba(var(--color-foreground-rgb), 0.18);
+  background:
+    linear-gradient(180deg, rgba(var(--color-foreground-rgb), 0.05), rgba(var(--color-foreground-rgb), 0.022)),
+    radial-gradient(circle, rgba(var(--color-foreground-rgb), 0.12) 0 0.75px, transparent 0.95px) 0 0 / 6px
+      6px;
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--color-foreground-rgb), 0.03),
+    0 0 0 1px rgba(var(--color-foreground-rgb), 0.015);
+  transform: translateX(calc(var(--theme-toggle-slot-size) + var(--theme-toggle-gap)));
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+  will-change: transform;
+  z-index: 0;
+}
+
+.themeToggle[data-theme='light'] .themeToggleThumb {
+  transform: translateX(0);
+}
+
+.themeToggleSlot {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: var(--theme-toggle-slot-size);
+  height: var(--theme-toggle-slot-size);
+  align-items: center;
+  justify-content: center;
+  color: var(--color-copy-soft);
+  transition:
+    color 180ms ease,
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.themeToggleSlotActive {
+  color: var(--color-foreground);
+  filter: drop-shadow(0 0 6px rgba(var(--color-foreground-rgb), 0.08));
+}
+
+.themeToggleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.themeGlyph {
+  display: block;
+  width: 1.08rem;
+  height: 1.08rem;
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 180ms ease;
+}
+
+.themeToggleSlotActive .themeToggleIcon {
+  transform: scale(1.06);
+}
+
+.themeToggle:not([data-theme='light']) .themeToggleSlot:first-of-type .themeToggleIcon {
+  transform: translateX(-0.14rem) scale(0.92);
+}
+
+.themeToggle[data-theme='light'] .themeToggleSlot:last-of-type .themeToggleIcon {
+  transform: translateX(0.14rem) scale(0.92);
+}
+
+.themeToggle:hover,
+.themeToggle:focus-visible,
 .githubLink:hover,
 .githubLink:focus-visible {
   transform: translateY(-2px);
@@ -163,9 +272,27 @@
       6px;
 }
 
+.themeToggle:focus-visible,
 .githubLink:focus-visible {
   outline: 2px solid rgba(var(--color-foreground-rgb), 0.35);
   outline-offset: 4px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.githubLink {
+  width: calc(var(--theme-toggle-slot-size) + var(--theme-toggle-inset) * 2);
+  height: calc(var(--theme-toggle-slot-size) + var(--theme-toggle-inset) * 2);
 }
 
 .githubIcon {
@@ -197,13 +324,18 @@
     flex-wrap: wrap;
   }
 
+  .nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+
   .header.headerPinned {
     width: calc(100vw - 1.5rem);
     top: 0.75rem;
     padding: 0.85rem 1rem 0.95rem;
   }
 
-  .githubLink {
+  .actions {
     margin-left: auto;
   }
 }
@@ -219,12 +351,21 @@
     flex: 1 1 auto;
   }
 
+  .actions {
+    gap: 0.6rem;
+  }
+
   .header.headerPinned {
     width: calc(100vw - 1rem);
   }
 
   .headerMenuOpen::after {
     display: none;
+  }
+
+  .themeToggle {
+    --theme-toggle-gap: 0.26rem;
+    --theme-toggle-slot-size: 1.95rem;
   }
 
   .menuToggle {
@@ -316,7 +457,12 @@
     transition: none;
   }
 
+  .themeToggleThumb,
+  .themeToggleSlot,
+  .themeToggleIcon,
+  .themeGlyph,
   .menuToggle,
+  .themeToggle,
   .githubLink {
     transition: none;
   }

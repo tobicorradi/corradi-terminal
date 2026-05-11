@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { NavBar } from './NavBar';
 
 const items = [
@@ -22,7 +22,16 @@ describe('NavBar', () => {
       writable: true,
     });
 
-    render(<NavBar githubLink={githubLink} isPinned={false} items={items} name="Tobías Corradi" />);
+    render(
+      <NavBar
+        githubLink={githubLink}
+        isPinned={false}
+        items={items}
+        name="Tobías Corradi"
+        onToggleTheme={() => {}}
+        theme="dark"
+      />,
+    );
 
     const toggleButton = screen.getByLabelText(/open navigation menu/i);
     const navigation = screen.getByRole('navigation', { name: /primary/i });
@@ -41,5 +50,25 @@ describe('NavBar', () => {
       'aria-expanded',
       'false',
     );
+  });
+
+  it('calls the theme toggle action', async () => {
+    const user = userEvent.setup();
+    const onToggleTheme = vi.fn();
+
+    render(
+      <NavBar
+        githubLink={githubLink}
+        isPinned={false}
+        items={items}
+        name="Tobías Corradi"
+        onToggleTheme={onToggleTheme}
+        theme="dark"
+      />,
+    );
+
+    await user.click(screen.getByRole('button', { name: /toggle site theme/i }));
+
+    expect(onToggleTheme).toHaveBeenCalledTimes(1);
   });
 });

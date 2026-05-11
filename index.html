@@ -23,6 +23,37 @@
     <meta name="twitter:description" content="__SITE_DESCRIPTION__" />
     <meta name="twitter:image" content="__SITE_OG_IMAGE__" />
     <meta name="twitter:image:alt" content="__SITE_OG_IMAGE_ALT__" />
+    <script>
+      (() => {
+        const storageKey = 'site-theme';
+        const colors = {
+          dark: '#080706',
+          light: '#f4efe4',
+        };
+
+        let theme = 'dark';
+
+        try {
+          const storedTheme = window.localStorage.getItem(storageKey);
+          if (storedTheme === 'dark' || storedTheme === 'light') {
+            theme = storedTheme;
+          } else if (
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-color-scheme: light)').matches
+          ) {
+            theme = 'light';
+          }
+        } catch {
+          theme = 'dark';
+        }
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', colors[theme]);
+      })();
+    </script>
     <script type="application/ld+json">
       __SITE_STRUCTURED_DATA__
     </script>

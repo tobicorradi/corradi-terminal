@@ -1,4 +1,5 @@
-:root {
+:root,
+:root[data-theme='dark'] {
   color-scheme: dark;
   font-family: var(--font-body);
   line-height: 1.5;
@@ -24,6 +25,43 @@
   --color-dot: rgba(var(--color-foreground-rgb), 0.1);
   --color-dot-soft: rgba(var(--color-foreground-rgb), 0.05);
   --color-scanline: rgba(var(--color-foreground-rgb), 0.028);
+  --color-shell-grid-dot: var(--color-dot-soft);
+  --color-shell-grid-line: var(--color-scanline);
+  --color-shell-grid-opacity: 0.8;
+  --color-shell-glow-start: rgba(61, 66, 78, 0.16);
+  --color-shell-glow-end: rgba(var(--color-foreground-rgb), 0.08);
+  --color-shell-sheen: rgba(var(--color-foreground-rgb), 0.02);
+  --color-vignette: rgba(0, 0, 0, 0.54);
+  --color-nav-surface: rgba(6, 7, 9, 0.9);
+  --color-shadow: rgba(0, 0, 0, 0.36);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-background: #f4efe4;
+  --color-foreground: #191613;
+  --color-foreground-rgb: 25, 22, 19;
+  --color-copy-strong: rgba(var(--color-foreground-rgb), 0.94);
+  --color-copy: rgba(var(--color-foreground-rgb), 0.84);
+  --color-copy-soft: rgba(var(--color-foreground-rgb), 0.68);
+  --color-border: rgba(var(--color-foreground-rgb), 0.18);
+  --color-border-strong: rgba(var(--color-foreground-rgb), 0.3);
+  --color-surface: rgba(var(--color-foreground-rgb), 0.022);
+  --color-surface-strong: rgba(var(--color-foreground-rgb), 0.048);
+  --color-dot: rgba(var(--color-foreground-rgb), 0.05);
+  --color-dot-soft: rgba(var(--color-foreground-rgb), 0.018);
+  --color-scanline: rgba(var(--color-foreground-rgb), 0.022);
+  --color-shell-grid-dot: rgba(var(--color-foreground-rgb), 0.034);
+  --color-shell-grid-line: rgba(var(--color-foreground-rgb), 0.03);
+  --color-shell-grid-opacity: .8;
+  --color-bloom: transparent;
+  --color-bloom-strong: transparent;
+  --color-shell-glow-start: transparent;
+  --color-shell-glow-end: transparent;
+  --color-shell-sheen: transparent;
+  --color-vignette: transparent;
+  --color-nav-surface: rgba(244, 239, 228, 0.92);
+  --color-shadow: rgba(70, 50, 28, 0.16);
 }
 
 * {
@@ -39,6 +77,9 @@ body {
   min-width: 320px;
   background: var(--color-background);
   color: var(--color-foreground);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
 a,
@@ -118,5 +159,11 @@ img {
   50% {
     opacity: 0.82;
     transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
   }
 }
