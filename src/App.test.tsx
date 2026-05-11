@@ -18,6 +18,7 @@ describe('App', () => {
     expect(screen.getAllByRole('img', { name: /animated ascii orb/i }).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/open to meaningful challenges/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/rootstrap/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/worldwide|remote/i).length).toBeGreaterThan(0);
     expect(screen.getAllByRole('link', { name: /open github profile/i }).length).toBeGreaterThan(0);
   });
 });

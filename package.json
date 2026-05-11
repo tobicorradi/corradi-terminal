@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3423",
+    "dev": "vite",
     "build:client": "vite build",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir .ssr",
     "prerender": "node scripts/prerender.mjs",

@@ -19,14 +19,14 @@ export const siteContent = {
     title: 'Tobías Corradi',
     technologies: ['React', 'TypeScript', 'Next.js', 'Redux'],
     summary:
-      'Engineering Lead building clean and scalable frontend systems using React, TypeScript and Next.js.',
+      'Engineering Lead building clean and scalable frontend systems for product teams worldwide using React, TypeScript and Next.js.',
   },
   cards: [
     {
       title: 'Role',
       icon: '[@]',
       description: 'Current position',
-      lines: ['Engineering Lead', 'Rootstrap'],
+      lines: ['Engineering Lead', 'Rootstrap · Remote / Worldwide'],
     },
     {
       title: 'Experience',
@@ -44,16 +44,16 @@ export const siteContent = {
       title: 'Focus',
       icon: '[*]',
       description: 'What I optimize',
-      lines: ['Frontend architecture and clean UI', 'Developer experience and product thinking'],
+      lines: ['Frontend architecture and clean UI', 'Remote collaboration and product thinking'],
     },
   ],
   about: [
-    'Frontend-focused Software Engineer and Engineering Lead with experience building scalable web applications, frontend systems and product-focused experiences. Specialized in React, TypeScript and Next.js, with strong interest in clean UI, frontend architecture, developer experience and product thinking.',
-    "I build clean, scalable and product-focused web experiences. Currently working as Engineering Lead at Rootstrap, partnering with The Farmer's Dog on frontend systems, developer experience and mentoring.",
+    'Frontend-focused Software Engineer and Engineering Lead with experience building scalable web applications, frontend systems and product-focused experiences for remote teams across different markets. Specialized in React, TypeScript and Next.js, with strong interest in clean UI, frontend architecture, developer experience and product thinking.',
+    "I build clean, scalable and product-focused web experiences. Currently working remotely as Engineering Lead at Rootstrap, partnering with The Farmer's Dog on frontend systems, developer experience and mentoring for a global product environment.",
     'I studied at Escuela Da Vinci and stay active in the frontend community through React Learning Camp promotion, React community participation and tech-focused LinkedIn networking.',
   ],
   aboutNote:
-    'Current interests: frontend systems, product-focused development, developer experience, AI, scalable web applications, clean UI and minimalist interfaces.',
+    'Current interests: frontend systems, remote product development, developer experience, AI, scalable web applications, clean UI and minimalist interfaces.',
   workTimeline: [
     {
       period: 'Current',
@@ -61,7 +61,7 @@ export const siteContent = {
       title: 'Engineering Lead / Software Engineer',
       company: 'Rootstrap',
       description:
-        "Leading frontend work through Rootstrap while partnering with The Farmer's Dog to build scalable web applications, frontend systems and product-focused experiences with React, TypeScript, Next.js, Redux and JavaScript.",
+        "Leading remote frontend work through Rootstrap while partnering with The Farmer's Dog to build scalable web applications, frontend systems and product-focused experiences for teams and users distributed worldwide.",
     },
     {
       period: '6+ years',
@@ -69,15 +69,15 @@ export const siteContent = {
       title: 'Scalable Web Applications',
       company: 'React / TypeScript / Next.js / Redux',
       description:
-        'Focused on clean UI, reusable frontend architecture and product development that balances speed, clarity and maintainability.',
+        'Focused on clean UI, reusable frontend architecture and product development that balances speed, clarity and maintainability across remote and international product teams.',
     },
     {
       period: 'Ongoing',
       category: 'Mentor',
       title: 'Developer Experience and Leadership',
-      company: 'Product-focused engineering teams',
+      company: 'Remote product-focused engineering teams',
       description:
-        'Mentoring developers, leading frontend initiatives and improving developer experience through better systems, collaboration and technical direction.',
+        'Mentoring developers, leading frontend initiatives and improving developer experience through better systems, async collaboration and technical direction.',
     },
   ],
   stackGroups: [
@@ -99,10 +99,10 @@ export const siteContent = {
   ],
   contact: {
     message:
-      'If you are building something product-focused on the web, I am especially interested in frontend systems, developer experience, AI-adjacent work and clean UI challenges.',
+      'If you are building something product-focused on the web, I am especially interested in frontend systems, developer experience, AI-adjacent work and clean UI challenges for remote teams around the world.',
     secondaryMessage:
-      'The best fit is work that values scalable web applications, clear product thinking and strong collaboration across engineering and design.',
-    topics: ['React', 'TypeScript', 'Next.js', 'Redux', 'Frontend Architecture', 'AI'],
+      'The best fit is work that values scalable web applications, clear product thinking and strong collaboration across engineering, design and distributed product teams.',
+    topics: ['React', 'TypeScript', 'Next.js', 'Redux', 'Frontend Architecture', 'Remote Collaboration'],
     link: {
       label: 'Open LinkedIn',
       href: 'https://www.linkedin.com/in/corraditobias',
